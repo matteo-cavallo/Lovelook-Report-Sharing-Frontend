@@ -27,14 +27,16 @@ export default function Index({ products }) {
   const totalSales = () => {
     let total = 0;
     let orders = [];
-    products.forEach((product) => {
-      product.orders.forEach((order) => {
-        orders.push(order.price);
+    if (products.length != 0) {
+      products.forEach((product) => {
+        product.orders.forEach((order) => {
+          orders.push(order.price);
+        });
       });
-    });
-    total = orders.reduce((accumulator, current) => {
-      return accumulator + current;
-    });
+      total = orders.reduce((accumulator, current) => {
+        return accumulator + current;
+      });
+    }
     return { total: total, number: orders.length };
   };
 
